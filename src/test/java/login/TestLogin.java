@@ -16,7 +16,7 @@ public class TestLogin extends BaseSetup {
     @DataProvider(name = "loginData")
     public Object[][] loginData() {
         return new Object[][]{
-                {"09152", "**********", true},          // Case of successful login
+                {"09152", "*******", true},          // Case of successful login
                 {"aa", "09152", false},                 // In case the login name is wrong
                 {"09152", "hg", false},                 // In case the password name is wrong
                 {"", "09152", false},                   // In case the login name is left blank, the correct password
@@ -32,7 +32,7 @@ public class TestLogin extends BaseSetup {
     @Test(dataProvider = "loginData")
     public void testLogin(String username, String password, boolean expectedResults) {
 
-        driver.get("");
+        driver.get("url");
         driver.findElement(By.name("Username")).sendKeys(username);
         driver.findElement(By.name("Password")).sendKeys(password);
         driver.findElement(By.id("SerExtraNet5_Membership_LoginPanel0_LoginButton")).click();
